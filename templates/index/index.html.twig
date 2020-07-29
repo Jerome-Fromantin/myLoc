@@ -1,19 +1,18 @@
-<!DOCTYPE html>
+{% extends 'header.html.twig' %}
 
-<title>Hello IndexController!</title>
 
 {% block body %}
-<div class="container" style="text-align:center">
-    <div class="row">
-        <h1>Biens</h1>
-        {% for bien in biens %}
-            <div>
-                <p>{{ bien.nom }}</p>
-                <p><a href="{{ bien.id }}">{{ bien.categorie }}</a></p>
-                <div class="col-6"><img src="{{ asset('assets/img/' ~ bien.image ) }}"></div>
-                <p><a href="{{ bien.id }}">Voir plus...</a></p>
-            </div>
+    <div class="container">
+        <div class="row">
+            <h1>Biens</h1>
+            {% for bien in biens %}
+                
+                    <p>{{ bien.nom }}</p>
+                    <p><a href="{{ bien.id }}">{{ bien.categorie }}</a></p>
+                    <img class="" src="{{ asset('assets/img/' ~ bien.image ) }}">
+                    <p><a href="{{ bien.id }}">Voir plus...</a></p>
+                
         {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}

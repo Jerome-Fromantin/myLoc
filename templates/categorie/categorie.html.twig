@@ -1,0 +1,18 @@
+{% extends 'header.html.twig' %}
+
+{% block body %}
+
+
+{% for bien in biens %}
+    <div class="text-center">
+        <div class="h1">{{ bien.nom}}</div>
+        <div><a class="" href="{{bien.categorie}}">{{bien.categorie}}</a></div>
+                
+        <img class="container" src="{{ asset('assets/img/' ~ bien.image ) }}" alt="">
+    </div>
+
+{% endfor %}
+
+
+
+{% endblock %}
