@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+{% extends 'header.html.twig' %}
 
-<title>Hello IndexController!</title>
+{% block title %} MyLoc {% endblock %}
 
 {% block body %}
-<div class="container" style="text-align:center">
+<div class="container">
     <div class="row">
         <h1>Biens</h1>
         {% for bien in biens %}
-            <div>
+            <div class="col-12">
                 <p>{{ bien.nom }}</p>
                 <p><a href="{{ bien.id }}">{{ bien.categorie }}</a></p>
                 <div class="col-6"><img src="{{ asset('assets/img/' ~ bien.image ) }}"></div>
