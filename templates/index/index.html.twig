@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<title>Hello IndexController!</title>
+
+{% block body %}
+<div class="container" style="text-align:center">
+    <div class="row">
+        <h1>Biens</h1>
+        {% for bien in biens %}
+            <div>
+                <p>{{ bien.nom }}</p>
+                <p><a href="{{ bien.id }}">{{ bien.categorie }}</a></p>
+                <div class="col-6"><img src="{{ asset('assets/img/' ~ bien.image ) }}"></div>
+                <p><a href="{{ bien.id }}">Voir plus...</a></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
