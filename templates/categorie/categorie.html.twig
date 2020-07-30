@@ -1,15 +1,30 @@
 {% extends 'header.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <div class="row text-center">
-        <h1 class="col-12 display-1 font-weight-bold my-5"><u>Biens par catégorie</u></h1>
-        {% for bien in biens %}
-            <p class="col-12 display-4 font-weight-bold mt-5">{{ bien.nom }}</p>
-            <p class="col-12">Catégorie : <a href="/categorie/{{ bien.categorie }}">{{ bien.categorie }}</a></p>
-            <div class="col-12"><img src="{{ asset('assets/img/' ~ bien.image ) }}" class="w-75" style="border:5px blue solid; border-radius:20px"></div>
-            <p class="col-12">{{ bien.description }}</p>
-        {% endfor %}
-    </div>
-</div>
+
+<main class="container">
+    <session class="row">
+
+        <div class="col-12">
+            <h3 class="font-weight-bold my-5">{{ categorie.nom }}</h3>
+        </div>
+
+            {% for bien in biens %}
+
+                <div class="row jumbotron">
+                    <div class="col-6">
+                        <img src="{{ asset('assets/img/' ~ bien.image ) }}" class="img-fluid w-75" style="border:5px blue solid; border-radius:20px">
+                    </div>
+
+                    <div class="col-6">
+                        <a href="/single/{{ bien.nom }}"><p class="h2 font-weight-bold mt-5">{{ bien.nom }}</p></a>
+                        <p>{{ bien.proprio}}</p>
+                    </div>
+
+                </div>
+
+            {% endfor %}
+    </session>
+</main>
+
 {% endblock %}

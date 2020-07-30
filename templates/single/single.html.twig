@@ -4,12 +4,22 @@
 
 {% block body %}
 <div class="container">
-    <div class="row text-center">
-        <h1 class="col-12 display-1 font-weight-bold my-5"><u>Bien choisi</u></h1>
-        <p class="col-12 display-4 font-weight-bold mt-5">{{ bien.nom }}</p>
-        <p class="col-12">Catégorie : <a href="/categorie/{{ bien.categorie }}">{{ bien.categorie }}</a></p>
-        <div class="col-12"><img src="{{ asset('assets/img/' ~ bien.image ) }}" class="w-75" style="border:5px blue solid; border-radius:20px"></div>
-        <p class="col-12">{{ bien.description }}</p>
+    <div class="row p-5">
+        <div class="col-9">
+            <img src="{{ asset('assets/img/' ~ bien.image ) }}" class="w-75" style="border:5px blue solid; border-radius:20px">
+            <p class="h4 font-weight-bold mt-2">{{ bien.nom }}</p>
+        </div>
+        <div class="col-3 jumbotron text-center p-3">
+            <p class="h2 font-weight-bold mt-4">{{ bien.proprio}}</p>
+            <p class="h4 font-weight-bold mt-4">Solde de points:</p>
+
+            <button class="btn btn-primary font-weight-bold mt-4">Réserver</button>
+        </div>
+
+        <div class="col-12 p-3 mt-3 border-bottom border-top">
+            <h4>Description</h4>
+            <p>{{ bien.description }}</p>
+        </div>
     </div>
 </div>
 {% endblock %}
