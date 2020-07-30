@@ -10,15 +10,15 @@ use App\Entity\Categorie;
 class CategorieController extends AbstractController
 {
     /**
-     * @Route("/categorie/{nom}", name="categorie")
+     * @Route("/categorie/{nomcat}", name="categorie")
      */
-    public function categorie($nom)
+    public function categorie($nomcat)
     {
           
             $em = $this->getDoctrine()->getManager();
 
             $categorie = $em->getRepository(Categorie::class)->findOneBy([
-                'nom'=>$nom
+                'nom' => $nomcat
             ]);
             
 

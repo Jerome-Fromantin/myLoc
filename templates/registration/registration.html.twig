@@ -1,0 +1,22 @@
+{% extends 'header.html.twig' %}
+
+{% block body %}
+    <main class="container">
+
+        <div class="w-50">
+            {{form_start(form)}}
+
+            {{form_row(form.pseudo, {'label' : 'Pseudo : '}) }}
+            {{form_row(form.mail, {'label' :  'Mail : '}) }}
+            {{form_row(form.password, {'label' : 'Mot de passe : '}) }}
+
+            {{form_end(form)}}
+
+
+        </div>
+
+    </main>
+
+
+
+{% endblock %}

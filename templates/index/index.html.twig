@@ -9,7 +9,7 @@
             <p class="col-12 display-4 font-weight-bold mt-5">{{ bien.nom }}</p>
             <p class="col-12">Catégorie : <a href="/categorie/{{ bien.categorie }}">{{ bien.categorie }}</a></p>
             <div class="col-12"><img src="{{ asset('assets/img/' ~ bien.image ) }}" class="w-75" style="border:5px blue solid; border-radius:20px"></div>
-            <p class="col-12 font-weight-bold"><a href="{{ bien.id }}">Voir plus...</a></p>
+            <p class="col-12 font-weight-bold"><a href="/single/{{ bien.nom }}">Voir plus...</a></p>
         {% endfor %}
         </div>
     </div>

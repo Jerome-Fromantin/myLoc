@@ -1,0 +1,23 @@
+{% extends 'header.html.twig' %}
+
+{% block body %}
+<main class="container">
+
+        <div class="w-50">
+            {{form_start(form)}}
+
+            {{form_row(form.nom, {'label' : 'Nom : '}) }}
+            {{form_row(form.description, {'label' :  'Description : '}) }}
+            {{form_row(form.image, {'label' : 'Image : '}) }}
+            {{form_row(form.categorie, {'label' : 'Catégorie : '}) }}
+
+            {{form_end(form)}}
+
+
+        </div>
+
+    </main>
+
+
+
+{% endblock %}
