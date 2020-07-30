@@ -1,31 +1,15 @@
 {% extends 'header.html.twig' %}
 
-<<<<<<< HEAD
-
-{% block body %}
-    <div class="container">
-        <div class="row">
-            <h1>Biens</h1>
-            {% for bien in biens %}
-                
-                    <p>{{ bien.nom }}</p>
-                    <p><a href="{{ bien.id }}">{{ bien.categorie }}</a></p>
-                    <img class="" src="{{ asset('assets/img/' ~ bien.image ) }}">
-                    <p><a href="{{ bien.id }}">Voir plus...</a></p>
-                
-=======
 {% block title %}Biens prêtés{% endblock %}
-
 {% block body %}
 <div class="container">
     <div class="row text-center">
         <h1 class="col-12 display-1 font-weight-bold my-5"><u>Biens prêtés</u></h1>
         {% for bien in biens %}
             <p class="col-12 display-4 font-weight-bold mt-5">{{ bien.nom }}</p>
-            <p class="col-12">Catégorie : <a href="{{ bien.id }}">{{ bien.categorie }}</a></p>
+            <p class="col-12">Catégorie : <a href="/categorie/{{ bien.categorie }}">{{ bien.categorie }}</a></p>
             <div class="col-12"><img src="{{ asset('assets/img/' ~ bien.image ) }}" class="w-75" style="border:5px blue solid; border-radius:20px"></div>
             <p class="col-12 font-weight-bold"><a href="{{ bien.id }}">Voir plus...</a></p>
->>>>>>> 793a34562520817e325e62aed5515df9bd1eea4d
         {% endfor %}
         </div>
     </div>
