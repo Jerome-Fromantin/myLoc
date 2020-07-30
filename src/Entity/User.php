@@ -6,12 +6,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface
 {
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -35,13 +37,13 @@ class User
     private $password;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer") 
      */
     private $points;
 
     /**
      * @ORM\OneToMany(targetEntity=Biens::class, mappedBy="proprio")
-     */
+    */
     private $biens;
 
     /**
@@ -168,5 +170,26 @@ class User
         }
 
         return $this;
+    }
+    
+    public function getUsername()
+    {
+        return $this->pseudo;
+    }
+    public function getSalt()
+    {
+        
+    }
+    public function eraseCredentials()
+    {
+        
+    }
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+    public function __toString()
+    {
+        return $this->pseudo;
     }
 }
