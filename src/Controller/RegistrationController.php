@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class RegistrationController extends AbstractController
 {
@@ -36,6 +37,7 @@ class RegistrationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($newUser);
             $em->flush();
+            return $this-> redirect($this->generateUrl('usr_login'));
         }
 
 
