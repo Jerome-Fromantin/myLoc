@@ -47,6 +47,7 @@ class Biens
      */
     private $pret;
 
+    
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
@@ -104,7 +105,7 @@ class Biens
     {
         return $this->imageName;
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -174,4 +175,6 @@ class Biens
 
         return $this;
     }
+        
+    
 }

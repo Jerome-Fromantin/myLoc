@@ -20,7 +20,6 @@ class AjoutController extends AbstractController
        
         $form = $this->createForm(AjoutType::class, $newBien);
         $user = $this->getuser();
-            dump($user);
 
 
         $form->handleRequest($request);
