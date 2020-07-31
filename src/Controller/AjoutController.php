@@ -20,7 +20,6 @@ class AjoutController extends AbstractController
        
         $form = $this->createForm(AjoutType::class, $newBien);
         $user = $this->getuser();
-            dump($user);
 
 
         $form->handleRequest($request);
@@ -33,8 +32,9 @@ class AjoutController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($newBien);
             $em->flush();
-    
-            return $this->redirectToRoute('Ajout');
+            
+            return $this->redirect($this->generateUrl('index'));
+            
         }
 
         return $this->render('ajout/ajout.html.twig', [

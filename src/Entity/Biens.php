@@ -9,6 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=BiensRepository::class)
+ * @Vich\Uploadable
  */
 class Biens
 {
@@ -47,6 +48,7 @@ class Biens
      */
     private $pret;
 
+    
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
@@ -63,7 +65,6 @@ class Biens
      */
     private $imageName;
 
-   
     /**
      * @ORM\Column(type="datetime")
      *
@@ -105,8 +106,7 @@ class Biens
     {
         return $this->imageName;
     }
-
-
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -136,7 +136,6 @@ class Biens
         return $this;
     }
 
-   
     public function getProprio(): ?User
     {
         return $this->proprio;
