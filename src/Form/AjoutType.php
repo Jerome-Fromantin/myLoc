@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AjoutType extends AbstractType
 {
@@ -14,9 +15,9 @@ class AjoutType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('description')
-            ->add('image')
             ->add('categorie')
+            ->add('description')
+            ->add('imageFile', VichImageType::class)
             ->add('Ajouter', SubmitType::class)
         ;
     }

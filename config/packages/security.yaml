@@ -22,7 +22,6 @@ security:
                 check_path: 'usr_login'
                 default_target_path: 'session'
 
-
             logout: 
                 path: 'usr_logout'
                 target: 'index'

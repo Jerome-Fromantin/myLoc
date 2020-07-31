@@ -34,7 +34,7 @@ class AjoutController extends AbstractController
             $em->persist($newBien);
             $em->flush();
     
-            return $this->redirectToRoute('Ajout');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('ajout/ajout.html.twig', [

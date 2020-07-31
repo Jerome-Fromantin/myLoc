@@ -9,13 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class RegistrationController extends AbstractController
 {
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $encoder)
+    public function registration(Request $request, UserPasswordEncoderInterface $encoder)
 
     {
         $user = new User;
@@ -36,13 +37,16 @@ class RegistrationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($newUser);
             $em->flush();
+            return $this->redirect($this->generateUrl('usr_login'));
         }
-
 
         return $this->render('registration/registration.html.twig', [
             'form' => $form->createView(),
             ]);
-    }
+        }
+    
+      
+        
     /**
      * @Route("/login", name="usr_login")
      */
