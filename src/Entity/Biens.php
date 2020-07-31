@@ -176,4 +176,6 @@ class Biens
 
         return $this;
     }
+        
+    
 }

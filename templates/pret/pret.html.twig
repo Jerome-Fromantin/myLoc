@@ -1,0 +1,28 @@
+{% extends 'header.html.twig' %}
+
+{% block body %}
+<main class="container">
+    <section class="row">
+        <div class="col-12">
+                <h2>Récapitulatif</h2>
+            <p class="h4 font-weight-bold mt-2">{{ bien.nom }}</p>
+            <p>{{ bien.description }}</p>
+            <p class="h2 font-weight-bold mt-4">{{ bien.proprio}}</p>
+        </div>
+        
+
+
+
+        {{form_start(form)}}
+
+        {{form_row(form.date_debut, {'label' : 'Date de début : '}) }}
+        {{form_row(form.date_fin, {'label' :  'Date de fin : '}) }}
+
+
+        {{form_end(form)}}
+    </section>
+    
+
+</main>
+            
+{% endblock %}
