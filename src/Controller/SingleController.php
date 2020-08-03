@@ -19,8 +19,11 @@ class SingleController extends AbstractController
             'nom' => $nom
         ]);
 
+        $user = $bien->getProprio();
+
         return $this->render('single/single.html.twig', [
-            'bien'=> $bien
+            'bien' => $bien,
+            'user' => $user
         ]);
     }
 }
