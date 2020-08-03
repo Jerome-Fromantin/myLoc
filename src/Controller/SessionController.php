@@ -14,13 +14,18 @@ class SessionController extends AbstractController
     public function user()
     {
         $user = $this->getuser();
-        dump($user);
+        $bien = $user->getBiens();
+        $pret = $user->getPrets();
+        dump($bien);
+
         /*$em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository(User::class)->findAll();*/
 
         return $this->render('session/session.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'biens'=> $bien,
+            'prets'=> $pret
         ]);
     }
 }

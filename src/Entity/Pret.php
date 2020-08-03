@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PretRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PretRepository::class)
@@ -18,6 +19,7 @@ class Pret
     private $id;
 
     /**
+     * @Assert|Date
      * @ORM\Column(type="date")
      */
     private $date_debut;
@@ -90,5 +92,9 @@ class Pret
         $this->biens = $biens;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->date_debut;
     }
 }
