@@ -1,23 +1,27 @@
 {% extends 'header.html.twig' %}
 
 {% block body %}
-<main class="container bg-dark">
+<main class="container">
 
-        <div class="w-50 bg-dark">
+        <div class="w-50">
             {{form_start(form)}}
 
-            {{form_row(form.nom, {'label' : 'Nom : '}) }}
-            {{form_row(form.description, {'label' :  'Description : '}) }}
-            {{form_row(form.categorie, {'label' : 'Catégorie : '}) }}
-            {{form_row(form.imageFile, {'attr':{'class' : 'form-control-file'}}) }}
+
+            {{form_label(form.nom)}}
+            
+
+            {{form_row(form.description)}}
+
+            {{form_row(form.categorie)}}
 
 
             {{form_end(form)}}
 
-
         </div>
 
-    </main>
+
+
+</main>
 
 
 

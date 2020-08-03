@@ -12,6 +12,8 @@ class SessionController extends AbstractController
      */
     public function index()
     {
+        $user = $this->getuser();
+        dump($user);
         return $this->render('session/session.html.twig', [
         ]);
     }
