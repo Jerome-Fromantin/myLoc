@@ -200,5 +200,9 @@ class Biens
     {
         return $this->nom;
     }
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
     
 }
