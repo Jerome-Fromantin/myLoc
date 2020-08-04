@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Vich\UploaderBundle\Naming\UniqidNamer;
 
 class AjoutType extends AbstractType
 {
@@ -18,7 +18,10 @@ class AjoutType extends AbstractType
             ->add('nom')
             ->add('categorie')
             ->add('description')
-            ->add('imageFile', VichImageType::class)
+            ->add('imageFile', VichImageType::class, array(
+                'required'=> true,
+                'attr' => ['placeholder' => 'Choisissez un fichier']
+            ))
             ->add('Ajouter', SubmitType::class)
         ;
 

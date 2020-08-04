@@ -6,13 +6,11 @@
         <div class="w-50">
             {{form_start(form)}}
 
-
-            {{form_label(form.nom)}}
-            
-
-            {{form_row(form.description)}}
-
-            {{form_row(form.categorie)}}
+            { m_row(form.categorie, {'label' : 'Catégorie : '}) }}
+            {{form_row(form.imageFile, {
+                'label' : 'Image : '
+            })
+            }}
 
 
             {{form_end(form)}}
