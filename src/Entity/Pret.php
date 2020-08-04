@@ -19,7 +19,7 @@ class Pret
     private $id;
 
     /**
-     * @Assert|Date
+     * @Assert\Date
      * @ORM\Column(type="date")
      */
     private $date_debut;
@@ -93,8 +93,5 @@ class Pret
 
         return $this;
     }
-    public function __toString()
-    {
-        return $this->date_debut;
-    }
+    
 }
