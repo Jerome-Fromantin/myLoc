@@ -44,8 +44,6 @@ class RegistrationController extends AbstractController
             'form' => $form->createView(),
             ]);
         }
-    
-      
         
     /**
      * @Route("/login", name="usr_login")
@@ -54,6 +52,7 @@ class RegistrationController extends AbstractController
     {
         return $this->render('registration/login.html.twig');
     }
+
     /**
      * @Route("/logout", name="usr_logout")
      */
