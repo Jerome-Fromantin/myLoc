@@ -12,9 +12,20 @@
         </div>
 
         <div class="col-12 m-1">
+            {% for bien in biens %}
+            
+                <p>{{bien.nom}}</p>
+                <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-25" style="border:5px blue solid; border-radius:20px">
+            
+            {% endfor %}
         </div>
 
         <div class="col-12 m-1">
+            {% for pret in prets %}
+
+                {{pret.dateDebut}}
+
+            {% endfor %}
         </div>
 
         <div class="col-12 m-1">
