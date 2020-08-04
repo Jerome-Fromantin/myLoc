@@ -8,25 +8,28 @@
         </div>
 
         <div class="col-12 m-1">
-        <h4>Nombre de points :<br>{{ user.points }}</h4>
+            <h4>Nombre de points :<br>{{ user.points }}</h4>
         </div>
 
         <div class="col-12 m-1">
-        {% for bien in biens %}
-        <p>{{bien.nom}}</p>
-        <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-25" style="border:5px blue solid; border-radius:20px">
-        
-        <p>{{bien.Pret}}</p>
-        {% endfor %}
+            <h4>Objets prêtés :<br></h4>
+            {% for bien in biens %}
+                <p>{{bien.nom}}</p>
+                <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-25"
+                style="border:5px blue solid; border-radius:20px">
+                
+                {% for loc in bien.prets %}
+                    <p>{{loc.emprunteur}} a emprunté cet objet du {{loc.dateDebut|date('d/m/Y')}} au {{loc.dateFin|date('d/m/Y')}}.</p>
+                {% endfor %}
+            {% endfor %}
+            <h4>Objets empruntés :<br></h4>
+                {% for pret in prets %}
+                <!--<p></p> pret.bien-->
+                <p>Du {{pret.dateDebut|date('d/m/Y')}} au {{pret.dateFin|date('d/m/Y')}}.</p>
+                {% endfor %}
         </div>
 
         <div class="col-12 m-1">
-        {% for pret in prets %}
-            {{pret.date_debut}}
-
-
-
-        {% endfor %}
         </div>
 
         <div class="col-12 m-1">
