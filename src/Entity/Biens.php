@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BiensRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -41,12 +43,6 @@ class Biens
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Pret::class, mappedBy="biens", cascade={"persist", "remove"})
-     */
-    private $pret;
-
     
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -70,6 +66,16 @@ class Biens
      * @var \DateTimeInterface|null
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Pret::class, mappedBy="bien")
+     */
+    private $prets;
+
+    public function __construct()
+    {
+        $this->prets = new ArrayCollection();
+    }
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -159,22 +165,40 @@ class Biens
         return $this;
     }
 
-    public function getPret(): ?Pret
+    /**
+     * @return Collection|Pret[]
+     */
+    public function getPrets(): Collection
     {
-        return $this->pret;
+        return $this->prets;
     }
 
-    public function setPret(Pret $pret): self
+    public function addPret(Pret $pret): self
     {
-        $this->pret = $pret;
-
-        // set the owning side of the relation if necessary
-        if ($pret->getBiens() !== $this) {
-            $pret->setBiens($this);
+        if (!$this->prets->contains($pret)) {
+            $this->prets[] = $pret;
+            $pret->setBien($this);
         }
 
         return $this;
     }
-        
+
+    public function removePret(Pret $pret): self
+    {
+        if ($this->prets->contains($pret)) {
+            $this->prets->removeElement($pret);
+            // set the owning side to null (unless already changed)
+            if ($pret->getBien() === $this) {
+                $pret->setBien(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    public function __toString()
+    {
+        return $this->nom;
+    }
     
 }

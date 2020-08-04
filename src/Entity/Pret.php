@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PretRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+/*use Symfony\Component\Validator\Constraints as Assert;*/
 
 /**
  * @ORM\Entity(repositoryClass=PretRepository::class)
@@ -19,7 +19,6 @@ class Pret
     private $id;
 
     /**
-     * @Assert|Date
      * @ORM\Column(type="date")
      */
     private $date_debut;
@@ -36,10 +35,10 @@ class Pret
     private $emprunteur;
 
     /**
-     * @ORM\OneToOne(targetEntity=Biens::class, inversedBy="pret", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Biens::class, inversedBy="prets")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $biens;
+    private $bien;
 
     public function getId(): ?int
     {
@@ -82,17 +81,18 @@ class Pret
         return $this;
     }
 
-    public function getBiens(): ?Biens
+    public function getBien(): ?Biens
     {
-        return $this->biens;
+        return $this->bien;
     }
 
-    public function setBiens(Biens $biens): self
+    public function setBien(?Biens $bien): self
     {
-        $this->biens = $biens;
+        $this->bien = $bien;
 
         return $this;
     }
+
     public function __toString()
     {
         return $this->date_debut;
