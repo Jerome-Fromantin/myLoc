@@ -22,7 +22,6 @@ class AjoutType extends AbstractType
                 'required'=> true,
                 'attr' => ['placeholder' => 'Choisissez un fichier']
             ))
-            ->add('Ajouter', SubmitType::class)
         ;
 
     }
