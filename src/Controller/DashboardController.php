@@ -31,16 +31,13 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'icon class', EntityClass::class);
-        yield MenuItem::section('Categorie');
+        yield MenuItem::section('Catégories');
         yield MenuItem::linkToCrud('Categories', 'fa fa-tags', Categorie::class);
 
-        yield MenuItem::section('Users');
+        yield MenuItem::section('Utilisateurs');
         yield MenuItem::linkToCrud('Users', 'fa fa-user', User::class);
 
         yield MenuItem::section('Biens');
         yield MenuItem::linkToCrud('Biens', 'fa fa-tags', Biens::class);
-
-
-
     }
 }

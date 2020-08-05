@@ -20,31 +20,34 @@ class PretController extends AbstractController
     public function newPret(Request $request,$nom)
     {  
         $user = $this->getuser(); 
+
         if (!empty($user)) {
+
             $em = $this->getDoctrine()->getManager();
 
             $bien = $em->getRepository(Biens::class)->findOneBy([
                 'nom' => $nom
             ]);
             $proprio = $bien->getProprio();
-            $newPret = new Pret;
 
             $points = $proprio->getPoints();
             $point = $points + 1;
-        
+
+            $newPret = new Pret;
+
             $form = $this->createForm(PretType::class, $newPret);
 
-
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
                 
                 $newPret = $form->getData();
+
                 $newPret->setEmprunteur($user);
                 $newPret->setBien($bien);
                 $proprio->setPoints($point);
 
                 
-
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newPret);
                 $em->flush();

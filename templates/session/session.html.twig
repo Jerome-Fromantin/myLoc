@@ -9,40 +9,50 @@
             <h2 class="mt-1">Compte Utilisateur</h2>
         </div>
 
-        <div class="col-4 text-center compte p-5">
+        <div class="col-3 text-center compte p-5">
             <div class="mt-5">
                 <i class="fas fa-3x fa-bullhorn"></i>
                 <a href="/session/Ajout" class="lien"><h5 class="font-weight-bold">Déposer une annonce</h5></a>
             </div>
             <div class="mt-5">
                 <i class="fas fa-3x fa-medal"></i>
-                <h5 class="font-weight-bold">Solde de points: {{ user.points }}</h5>
+                <h5 class="font-weight-bold">Solde de points : {{ user.points }}</h5>
             </div>
         </div>
 
-        <div class="col-4 text-center border-right">
+        <div class="col-3 text-center border-right">
 
-            <h4>Objets prêtés</h4>
+            <h4><span style="border:2px #55efc4 solid; border-radius:10px; padding:5px 10px">Annonces</span></h4>
 
             {% for bien in biens %}
-                <p>{{bien.nom}}</p>
-                <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-25">
-                
+                <p class="mt-3">{{bien.nom}}</p>
+                <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-50">
+            {% endfor %}
+        </div>
+
+        <div class="col-3 text-center border-right">
+
+            <h4><span style="border:2px #55efc4 solid; border-radius:10px; padding:5px 10px">Prêts en cours</span></h4>
+
+            {% for bien in biens %}
                 {% for loc in bien.prets %}
+                    <p class="mt-3">{{bien.nom}}</p>
+                    <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-50">
                     <p>{{loc.emprunteur}} a emprunté cet objet du {{loc.dateDebut|date('d/m/Y')}} au {{loc.dateFin|date('d/m/Y')}}.</p>
                 {% endfor %}
             {% endfor %}
         </div>
 
-        <div class="col-4 text-center">
+        <div class="col-3 text-center">
     
-            <h4>Objets empruntés</h4>
-                {% for pret in prets %}
-                <!--<p></p> pret.bien-->
-                <p>Du {{pret.dateDebut|date('d/m/Y')}} au {{pret.dateFin|date('d/m/Y')}}.</p>
-                {% endfor %}
+            <h4><span style="border:2px #55efc4 solid; border-radius:10px; padding:5px 10px">Objets empruntés</span></h4>
+            {% for pret in prets %}
+                {% set loc = pret.bien %}
+                <p class="mt-3">{{loc.nom}}</p>
+                <img src="{{ asset('assets/img/' ~ loc.imageName ) }}" class="img-fluid w-50">
+                <p>Vous avez emprunté cet objet du {{pret.dateDebut|date('d/m/Y')}} au {{pret.dateFin|date('d/m/Y')}}.</p>
+            {% endfor %}
         </div>
-
     </section>
 </main>
 {% endblock %}

@@ -3,6 +3,7 @@
 {% block body %}
 <main class="container">
     <section class="row">
+
         <div class="col-12">
                 <h2>Récapitulatif</h2>
             <p class="h4 font-weight-bold mt-2">{{ bien.nom }}</p>
@@ -11,17 +12,16 @@
         </div>
         
 
-
-
         {{form_start(form)}}
 
         {{form_row(form.date_debut, {'label' : 'Date de début : '}) }}
         {{form_row(form.date_fin, {'label' :  'Date de fin : '}) }}
-
+        <input type="submit" value="Réserver" class="btn btn-primary" />
 
         {{form_end(form)}}
-    </section>
-    
+
+
+    </section>  
 
 </main>
             

@@ -16,8 +16,7 @@ class RegistrationType extends AbstractType
         $builder
             ->add('pseudo')
             ->add('mail')
-            ->add('password', PasswordType::class)
-        ;
+            ->add('password', PasswordType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

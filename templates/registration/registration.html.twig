@@ -4,19 +4,17 @@
     <main class="container">
         <section class="row p-5">
 
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <h2>Formulaire d'inscription</h2>
             </div>
 
-
-            <div class="col-6 w-50">
+            <div class="col-6 offset-3 text-center">
             {{form_start(form)}}
 
             {{form_row(form.pseudo, {'label' : 'Pseudo : '}) }}
             {{form_row(form.mail, {'label' :  'Mail : '}) }}
             {{form_row(form.password, {'label' : 'Mot de passe : '}) }}
-            <input type="submit" value="S'inscrire" class="btn btn-danger"/>
-
+            <input type="submit" value="S'inscrire" class="btn btn-primary" />
             {{form_end(form)}}
 
 
