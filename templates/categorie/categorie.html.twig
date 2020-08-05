@@ -5,25 +5,34 @@
 <main class="container">
     <session class="row">
 
+        {% if app.user %}
+
+            <div class="col-12 p-3" >
+                <a href="/session/Ajout"><h5 class="btn btn-danger font-weight-bold">Déposer une annonce</h5></a>
+            </div>
+
+        {% endif %}
+
+
         <div class="col-12">
-            <h3 class="font-weight-bold my-5">{{ categorie.nom }}</h3>
+            <h2 class="font-weight-bold my-5">{{categorie.nom}}</h2>
         </div>
 
             {% for bien in biens %}
 
-                <div class="row jumbotron">
-                    <div class="col-6">
-                        <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid w-75" style="border:5px blue solid; border-radius:20px">
-                    </div>
+                    <div class="col-3">
 
-                    <div class="col-6">
-                        <a href="/single/{{ bien.nom }}"><p class="h2 font-weight-bold mt-5">{{ bien.nom }}</p></a>
-                        <p>{{ bien.proprio}}</p>
-                    </div>
+                        <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="img-fluid img">
+                        <div class="carte p-2">
 
-                </div>
+                            <a class="lien h5 font-weight-bold nom"href="/single/{{ bien.nom }}">{{ bien.nom }}</a> <span>-</span> <a href="/categorie/{{ bien.categorie }}" class="lien">{{ bien.categorie }}</a>
+
+                            <p>{{ bien.proprio}}</p>
+                        </div>
+                    </div>
 
             {% endfor %}
+
     </session>
 </main>
 

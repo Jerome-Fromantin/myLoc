@@ -1,0 +1,55 @@
+.back{
+    background-image: url(/assets/img/imgSite/nav.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.prov{
+    margin-top: 100px;
+    margin-bottom: 200px;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.titre{
+    font-size: 2em;
+}
+
+.img{
+    border:5px #dfe6e9 solid;
+    width: 100%;
+    height: 60%;
+}
+
+.carte{
+    background-color: #dfe6e9;
+}
+
+.lien:hover{
+    text-decoration: none;
+    color: #636e72;
+}
+
+.lien{
+    color: black;
+}
+
+.nom{
+    color: #00b894;
+}
+
+.nom:hover{
+    color: #55efc4;
+}
+
+.btnfond{
+    background-color: #74b9ff;
+    color: whitesmoke;
+}
+
+/*Session*/
+
+.compte{
+    background-color: #55efc4;
+}
