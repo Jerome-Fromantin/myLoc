@@ -6,14 +6,30 @@
 <div class="container">
     <div class="row p-5">
         <div class="col-9">
-            <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="w-75" style="border:5px blue solid; border-radius:20px">
+            <img src="{{ asset('assets/img/' ~ bien.imageName ) }}" class="w-75" style="border:5px #dfe6e9 solid; border-radius:20px">
             <p class="h4 font-weight-bold mt-2">{{ bien.nom }}</p>
         </div>
         <div class="col-3 jumbotron text-center p-3">
-            <p class="h2 font-weight-bold mt-4">{{ bien.proprio}}</p>
-            <p class="h4 font-weight-bold mt-4">Solde de points :</p>
-            <p class="h4 font-weight-bold mt-4">{{ user.points }}</p>
-            <a href="/pret/{{bien.nom}}"> <button class="btn btn-primary font-weight-bold mt-4">Réserver</button></a>
+            <i class="fas ml-1 fa-3x fa-user-tag"></i>
+            <p class="h2 font-weight-bold mt-1">{{ bien.proprio}}</p>
+            {% if user.points <= "5"%}
+                <i class="far fa-1x fa-star mt-1"></i>
+            {% elseif user.points <= "10" and user.points > "5"%}
+                <i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i>
+            {% elseif user.points <= "15" and user.points > "10" %}
+                <i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i>
+            {% elseif user.points <= "20" and user.points > "15" %}
+                <i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i>
+                <i class="far fa-1x fa-star mt-1"></i>
+
+            {% elseif user.points > "20" %}
+                <i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i>
+                <i class="far fa-1x fa-star mt-1"></i><i class="far fa-1x fa-star mt-1"></i>
+
+            {% endif %}
+            <p class="h4 font-weight-bold mt-5">Solde de points :</p>
+            <p class="h4 font-weight-bold mt-1">{{ user.points }}</p>
+            <a href="/pret/{{bien.nom}}"> <button class="btn btn-primary font-weight-bold mt-5">Réserver</button></a>
            
         </div>
 
