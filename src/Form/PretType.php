@@ -15,7 +15,6 @@ class PretType extends AbstractType
         $builder
             ->add('date_debut')
             ->add('date_fin')
-            ->add('Reserver', SubmitType::class)
 
         ;
     }

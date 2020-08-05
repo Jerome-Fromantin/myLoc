@@ -17,7 +17,7 @@ class SessionController extends AbstractController
         if (!empty($user)) {
             $bien = $user->getBiens();
             $pret = $user->getPrets();
-            dump($bien);
+            dump($user);
     
             /*$em = $this->getDoctrine()->getManager();
     

@@ -48,6 +48,8 @@ class PretController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newPret);
                 $em->flush();
+                dump($newPret);
+
                 
                 return $this->redirect($this->generateUrl('index'));
                 
