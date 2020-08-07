@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PretRepository;
 use Doctrine\ORM\Mapping as ORM;
-/*use Symfony\Component\Validator\Constraints as Assert;*/
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PretRepository::class)
@@ -20,11 +20,13 @@ class Pret
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThanOrEqual("today")
      */
     private $date_debut;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThanOrEqual (propertyPath="date_debut")
      */
     private $date_fin;
 

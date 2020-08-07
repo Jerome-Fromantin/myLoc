@@ -15,9 +15,11 @@ class IndexController extends AbstractController
     public function index()
     {
         $em = $this->getDoctrine()->getManager();
+        $route = "/";
         $biens = $em->getRepository(Biens::class)->findAll();
         return $this->render('index/index.html.twig', [
-            'biens' => $biens
+            'biens' => $biens,
+            'route' => $route
         ]);
     }
 }

@@ -48,8 +48,13 @@
     color: whitesmoke;
 }
 
-/*Session*/
-
 .compte{
+
     background-color: #55efc4;
 }
+
+
+.reserv{
+    width:200px;
+}
+

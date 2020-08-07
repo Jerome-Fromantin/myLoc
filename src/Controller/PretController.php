@@ -33,6 +33,28 @@ class PretController extends AbstractController
             $points = $proprio->getPoints();
             $point = $points + 1;
 
+            $getPrets = $bien -> getPrets();
+
+            $datePretDebut = [];
+            $datePretFin = [];
+            $check ="Validation des dates";
+
+            foreach($getPrets as $getPret){
+
+                $getDateDebuts = $getPret-> getDateDebut();
+            
+
+                array_push($datePretDebut, $getDateDebuts);
+
+
+                $getDateFins = $getPret-> getDateFin();
+
+
+                array_push($datePretFin, $getDateFins);
+
+            }
+
+
             $newPret = new Pret;
 
             $form = $this->createForm(PretType::class, $newPret);
@@ -51,6 +73,7 @@ class PretController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newPret);
                 $em->flush();
+
                 
                 return $this->redirect($this->generateUrl('index'));
                 
@@ -58,7 +81,10 @@ class PretController extends AbstractController
 
             return $this->render('pret/pret.html.twig', [
                 'form' => $form->createView(),
-                'bien'=> $bien
+                'bien'=> $bien,
+                'dateDebuts' => $datePretDebut,
+                'dateFins' => $datePretFin,
+                'check' => $check
             ]);
         }
         else {

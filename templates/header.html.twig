@@ -12,10 +12,19 @@
     </head>
 
     <body>
+
+        {% if route is defined %}
+
         <header class="container-fluid back">
+
+        {% else %}
+        <header class="container-fluid" style="background-image: url();background-size: cover;background-position: center;">
+
+        {% endif %}
+
             <div class="row">
                 <nav class="col-12 navbar navbar-expand-lg navbar-light p-5">
-                    <a class="navbar-brand titre font-weight-bold" href="/">My<span class="text-warning">Loc</span></a>
+                    <a class="navbar-brand titre font-weight-bold" href="/"><i>My</i><span class="text-warning">Loc</span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -41,7 +50,7 @@
                             <a href="/logout" class="nav-link font-weight-bold" > Déconnexion </a>
                             </li>
                         {% else %}
-                            <li class="nav-item ml-2">
+                            <li class="nav-item ml-2 text-center">
                                 <a class="nav-link font-weight-bold" href="/login">Connexion</a>
                             </li>
 
@@ -49,9 +58,16 @@
                         </ul>
                     </div>
                 </nav>
+
+                {% if route is defined %}
+
                 <div class="col-12 text-center p-5 prov">
                     <p> LE PLAISIR DU PARTAGE <p>
                 </div>
+
+                {% endif %}
+
+
                 {% if app.user %}
 
                 {% else %}
@@ -66,12 +82,104 @@
         {% block body %}
 
         {% endblock %}
-        {% block javascripts %}
 
+        <footer class="container-fluid bg-dark">
+            <div class="row p-3">
+                <span class="h4 text-white font-weight-bold"><i>My</i>Loc</span>
+            </div>
+        </footer>
+
+        {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+            
+            {% if check is defined %}
 
+            <script type="text/javascript">
+
+
+                document.getElementById("button").onclick = function (e) {
+
+
+                    let dateDebutPrets = [];
+                    let dateFinPrets =[];
+
+                    {% for dateDebut in dateDebuts %}
+
+                        var pushDateDebut = new Date("{{ dateDebut|date('Y,m,d') }}");
+                        dateDebutPrets.push(pushDateDebut);
+                                        
+                    {% endfor %}
+                    {% for dateFin in dateFins %}
+
+                        var pushDateFin = new Date("{{ dateFin|date('Y,m,d') }}");
+                        dateFinPrets.push(pushDateFin);
+
+                    {% endfor %}
+
+                    let JDebut = document.getElementById("pret_date_debut_day").value;
+                    let MDebut = document.getElementById("pret_date_debut_month").value - 1;
+                    let ADebut = document.getElementById("pret_date_debut_year").value;
+
+                    let Jfin = document.getElementById("pret_date_fin_day").value;
+                    let Mfin = document.getElementById("pret_date_fin_month").value - 1;
+                    let Afin = document.getElementById("pret_date_fin_year").value;
+
+
+
+                    let dateDeb = new Date(ADebut,MDebut,JDebut);
+                    let dateFin = new Date(Afin,Mfin,Jfin);
+                    
+                    var test = 0;
+
+                    for (var i= 0; i< dateDebutPrets.length; i++){
+
+                        if(dateDeb >= dateDebutPrets[i] && dateDeb <= dateFinPrets[i]){
+
+                            test = 1;
+                        }
+
+                        if (dateFin >= dateDebutPrets[i] && dateFin <= dateFinPrets[i]){
+                            test = 1;
+                        }
+
+                    }
+
+                    let alert = document.getElementById("alert");
+                    let box = document.getElementById("affaire");
+                    let img = document.createElement('img');
+                    let msg = document.createElement('p');
+                    img.src = "/assets/img/imgSite/internet.jpg";
+                    msg.innerHTML = "Affaire Conclue";
+
+
+                    let message = document.createTextNode("Objet non disponible à cette date");
+
+
+                    if (test !== 0 ){
+
+                            alert.style.display ="block";
+
+                            alert.appendChild(message);
+
+                            e.preventDefault();
+
+                    }else{
+
+                            alert.style.display ="none";
+                            
+                            box.appendChild(img);
+                            box.appendChild(p);
+
+                    }
+                    
+                };
+
+
+            </script>
+
+            {% endif %}
         {% endblock %}
     </body>
 </html>

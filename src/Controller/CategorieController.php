@@ -14,7 +14,7 @@ class CategorieController extends AbstractController
      */
     public function categorie(string $nom)
     {
-          
+            $route ="/categorie";
             $em = $this->getDoctrine()->getManager();
 
             $categorie = $em->getRepository(Categorie::class)->findOneBy([
@@ -24,7 +24,8 @@ class CategorieController extends AbstractController
 
         return $this->render('categorie/categorie.html.twig', [
             'categorie'=> $categorie,
-            'biens'=> $categorie->getBiens()
+            'biens'=> $categorie->getBiens(),
+            'route' => $route
 
 
         ]);

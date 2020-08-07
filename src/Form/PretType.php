@@ -14,9 +14,7 @@ class PretType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date_debut', DateType::class, [
-                'widget' => 'choice',
-            ])
+            ->add('date_debut')
             ->add('date_fin')
         ;
     }
